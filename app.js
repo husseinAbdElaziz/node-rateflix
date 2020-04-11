@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const PORT = 3000;
+const PORT = 3000 || process.env.PORT;
 const dbConnect = require('./routes/db_connect');
 const user = require('./routes/user/user');
 const media = require('./routes/media/media');
