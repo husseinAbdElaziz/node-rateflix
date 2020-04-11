@@ -16,6 +16,6 @@ app.use('/api/media', media);
 app.use(express.static(`${__dirname}/movies`));
 
 app.get('*', (req, res) => {
-    res.sendFile(`${__dirname}/movies/index.html`)
-})
+    res.sendFile(`${__dirname}/movies/index.html`);
+});
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
