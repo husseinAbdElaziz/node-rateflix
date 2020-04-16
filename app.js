@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const dbConnect = require('./routes/db_connect');
 const user = require('./routes/user/user');
 const media = require('./routes/media/media');
@@ -15,7 +15,12 @@ app.use('/api/media', media);
 
 app.use(express.static(`${__dirname}/movies`));
 
-app.get('*', (req, res) => {
-    res.sendFile(`${__dirname}/movies/index.html`);
+// app.get('*', (req, res) => {
+//     res.sendFile(`${__dirname}/movies/index.html`);
+// });
+const server = app.listen(PORT, () => {
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log("Example app listening at http://%s:%s", host, port);
+
 });
-app.listen(PORT, () => console.log(`server running on port ${PORT}`));
