@@ -1,17 +1,21 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 const dbConnect = require('./routes/db_connect');
 const user = require('./routes/user/user');
 const media = require('./routes/media/media');
+var bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(cors());
 
 app.use(express.json());
 app.use(dbConnect);
-app.use('/api/user', user);
-app.use('/api/media', media);
+app.use('/user', user);
+app.use('/media', media);
 
 app.use(express.static(`${__dirname}/movies`));
 
